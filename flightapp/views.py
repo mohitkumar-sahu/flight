@@ -19,5 +19,13 @@ def FlightAPIViews(request):
         if flight_serializer.is_valid():
             flight_serializer.save()
             return JsonResponse('Record added Sucessfully',safe=False)
+        elif request.method=="PUT":
+            flights=JSONParser().parse(request)
+            old_record=FlightDetails.objects.get(id=flights['id'])
+            if flight_serializer.is_valid():
+                flight_serializer.save()
+            return JsonResponse('Record updated Sucessfully',safe=False)
+
+
 
 
