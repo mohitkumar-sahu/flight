@@ -20,7 +20,6 @@ from flightapp import views
 urlpatterns = [
     path('',views.FlightAPIViews),
     path('<int:id>',views.FlightAPIViews),
-    path('status',include('users.urls')),
+    path('status/',include('users.urls')),
     path("admin/", admin.site.urls),
 ]
-    
